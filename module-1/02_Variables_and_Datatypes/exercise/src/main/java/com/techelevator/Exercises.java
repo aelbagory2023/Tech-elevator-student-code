@@ -250,9 +250,9 @@ public class Exercises {
         27. Mrs. Hilt has 50 cents. A pencil costs 7 cents. How many pencils can
         she buy with the money she has?
         */
-		float amountInCoinPurse = 0.50F;
-		float costOfPencil = 0.07F;
-		double numberOfPencilsPurchased = (amountInCoinPurse / costOfPencil );
+		double amountInCoinPurse = 0.50F;
+		double costOfPencil = 0.07F;
+		double numberOfPencilsPurchased = amountInCoinPurse / costOfPencil;
 
 
         /* Exercise 28
@@ -361,7 +361,7 @@ public class Exercises {
         person get if they share the cupcakes equally?
         */
 		int totalNumberOfCupcakes = 100;
-		int numberOfChildren = 8;
+		float numberOfChildren = 8F;
 		double cupcakesPerChild = totalNumberOfCupcakes / numberOfChildren;
 
 
@@ -370,6 +370,9 @@ public class Exercises {
         tiny glass jars. If each jar is to contain six cookies, how many
         cookies will not be placed in a jar?
         */
+		int totalNumberOfCookies = 47;
+		int cookiesPerJar = 6;
+		int cookiesLeftOver = totalNumberOfCookies % cookiesPerJar;
 
 
         /* Exercise 41
@@ -377,6 +380,9 @@ public class Exercises {
         neighbors. If each neighbor received an equal number of croissants,
         how many will be left with Marian?
         */
+		int totalNumberOfCroissants = 59;
+		int numberOfNeighbors = 8;
+		int croissantsLeftOver = totalNumberOfCroissants % numberOfNeighbors;
 
 
         /* Exercise 42
@@ -384,6 +390,9 @@ public class Exercises {
         place 12 cookies on a tray at a time, how many trays will she need to
         prepare 276 oatmeal cookies at a time?
         */
+		int totalNumberOfOatmealCookies = 276;
+		int cookiesPerTray = 12;
+		int numberOfTraysNeeded = totalNumberOfOatmealCookies / cookiesPerTray;
 
 
         /* Exercise 43
@@ -391,6 +400,9 @@ public class Exercises {
         bite-sized pretzels. If one serving is equal to 12 pretzels, how many
         servings of bite-sized pretzels was Marian able to prepare?
         */
+		int totalNumberOfPretzels = 480;
+		int numberPerServing = 12;
+		int numberOfServings = totalNumberOfPretzels / numberPerServing;
 
 
         /* Exercise 44
@@ -398,6 +410,10 @@ public class Exercises {
         orphanage. If two lemon cupcakes were left at home, how many
         boxes with 3 lemon cupcakes each were given away?
         */
+		int totalnumberOfLemonCupcakes = 53;
+		int numberOfLeftOverCupcakes = 2;
+		int cupcakesPerBox = 3;
+		int numberOfBoxes = (totalnumberOfLemonCupcakes -numberOfLeftOverCupcakes ) / cupcakesPerBox;
 
 
         /* Exercise 45
@@ -405,6 +421,9 @@ public class Exercises {
         were served equally to 12 people, how many carrot sticks were left
         uneaten?
         */
+		int totalNumberOfCarrots = 74;
+		int numberOfCarrotsPerPerson = 12;
+		int numberOfCarrotsLeft = totalNumberOfCarrots % numberOfCarrotsPerPerson;
 
 
         /* Exercise 46
@@ -412,6 +431,9 @@ public class Exercises {
         them on the shelves in their bedroom. If every shelf can carry a
         maximum of 7 teddy bears, how many shelves will be filled?
         */
+		int totalNumberOfTeddyBears = 98;
+		int teddyBearsPerShelf = 7;
+		int numberOfShelvesFilled = totalNumberOfTeddyBears / teddyBearsPerShelf;
 
 
         /* Exercise 47
@@ -419,6 +441,9 @@ public class Exercises {
         them in an album. If an album can contain 20 pictures, how many
         albums will she need if there are 480 pictures?
         */
+		int totalNumberOfPictures = 480;
+		int numberOfPicturesPerAlbum = 20;
+		int numberOfAlbumsNeeded = totalNumberOfPictures / numberOfPicturesPerAlbum;
 
 
         /* Exercise 48
@@ -427,6 +452,10 @@ public class Exercises {
         cards, how many boxes were filled and how many cards are there in
         the unfilled box?
         */
+		int totalNumberOfCards = 94;
+		int cardsPerFullBox = 8;
+		int numberOfBoxesFilled = totalNumberOfCards / cardsPerFullBox;
+		int numberOfCardsLeft = totalNumberOfCards % cardsPerFullBox;
 
 
         /* Exercise 49
@@ -434,12 +463,18 @@ public class Exercises {
         210 books to be distributed equally on the 10 shelves he repaired,
         how many books will each shelf contain?
         */
+		int totalNumberOfBooks = 210;
+		int numberOfShelves = 10;
+		int booksPerShelf = totalNumberOfBooks / numberOfShelves;
 
 
         /* Exercise 50
         50. Cristina baked 17 croissants. If she planned to serve this equally to
         her seven guests, how many will each have?
         */
+		int totalNumberOfCroissantsBaked = 17;
+		int numberOfGuests = 7;
+		int croissantsPerGuest = totalNumberOfCroissantsBaked / numberOfGuests;
 
 
 	    /* Exercise 51
@@ -448,6 +483,7 @@ public class Exercises {
 	    Hint: Calculate the rate at which each painter can complete a room (rooms / hour), combine those rates, 
 	    and then divide the total number of rooms to be painted by the combined rate.
 	    */
+		double
      
 
 	    /* Exercise 52
