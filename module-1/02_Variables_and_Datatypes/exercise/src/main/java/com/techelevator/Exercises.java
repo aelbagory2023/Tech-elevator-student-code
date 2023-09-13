@@ -483,7 +483,7 @@ public class Exercises {
 	    Hint: Calculate the rate at which each painter can complete a room (rooms / hour), combine those rates, 
 	    and then divide the total number of rooms to be painted by the combined rate.
 	    */
-		double
+
      
 
 	    /* Exercise 52
@@ -499,6 +499,9 @@ public class Exercises {
 	    53. The distance between New York and Chicago is 800 miles, and the train has already travelled 537 miles.
 	    What percentage of the trip as a whole number has been completed?
 	    */
+		int totalDistance = 800;
+		int distanceTraveled = 537;
+		double percentComplete = ( distanceTraveled / totalDistance ) * 100;
 
 	}
 
