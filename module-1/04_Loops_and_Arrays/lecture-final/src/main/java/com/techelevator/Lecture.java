@@ -1,0 +1,175 @@
+package com.techelevator;
+
+public class Lecture {
+
+    /*
+    1. Return the created array
+    */
+    public int[] returnArray() {
+        int[] array = { 80, 8080, 443 };
+        //int[] array = new int[] { 80, 8080, 443}
+        return array;
+    }
+
+    /*
+    2. Return the first element of the array
+    */
+    public int returnFirstElement() {
+        int[] portNumbers = { 80, 8080, 443 };
+        return portNumbers[0];
+    }
+
+    /*
+    3. Return the last element of the array
+    */
+    public int returnLastElement() {
+        int[] portNumbers = { 80, 8080, 443 };
+        //length - 1 is always the last element in the array
+        return portNumbers[portNumbers.length - 1]; //can do the math right in the brackets
+
+        /*
+        * could also NOT do the math right in the brackets
+        * int math = portNumbers.length - 1;
+        * return portNumbers[math];
+        * */
+    }
+
+    /*
+    4. Return the first element of the array from the parameters
+    */
+    public int returnFirstElementOfParam(int[] passedInArray) {
+        return passedInArray[0];
+    }
+
+    /*
+    5. Return the last element of the array from the parameters
+    */
+    public int returnLastElementOfParam(int[] passedInArray) {
+        return passedInArray[passedInArray.length - 1];
+    }
+
+    /*
+    6. Here, a variable is defined within a block. How can we get the value of that outside of the
+    block in order to
+       return it? There are a couple of different ways of doing this, what can you come up with?
+    */
+    public int returnVariableFromBlock(int number) {
+        //things that can be done:
+        //delete the brackets (because we're not strange and this example is strange)
+        //initialize the 'result' variable before the brackets (and reset it inside the brackets)
+        //return results inside the brackets
+        //return number * 5 and not have a block at all
+
+        int result = 0;
+        { // A new block with scoped variables
+
+            result = number * 5;
+
+        } // the result variable disappears here
+
+        return result; // We want to return result here. How?
+    }
+
+    /*
+    7. What will the variable result be at the end of the method? Change the number in the logic
+    expression so that
+       it returns true.
+    */
+    public boolean returnOperationInBlock() {
+        int result = 5;
+
+        {
+            int multiplier = 10;
+            result *= multiplier;
+        }
+
+        return result == 50; // <-- Change the number to match result and make this be true
+    }
+
+    /*
+    8. Return the only variable that is in scope at the return statement.
+    */
+    public double returnInScopeVariable() {
+        double one = 1.0;
+        {
+            double three = 3.0;
+            one += three;
+            {
+                double four = 4.0;
+                three = four - one;
+                one++;
+            }
+
+            double five = 5.0;
+            double eight = five + three;
+        }
+
+        return one;
+    }
+
+    /*
+    9. How many times do we go through this loop?
+    Change the number in the logic expression so that it returns true.
+    */
+    public boolean returnCounterFromLoop() {
+
+        int[] arrayToLoopThrough = { 3, 4, 2, 9 }; //length is 4
+
+        int counter = 0; // Must be started outside the block so that have access to it after the block
+
+        for (int i = 0; i < arrayToLoopThrough.length; i++) {
+            counter++;
+        }
+
+        return counter == 4; // What should the number be to return true?
+    }
+
+    /*
+    10. This loop is counting incorrectly. What needs to change in the loop for it to count properly?
+    */
+    public boolean returnCorrectCount() {
+        int[] arrayToLoopThrough = { 4, 23, 9 };
+
+        int counter = 0;
+
+        //     Start;       Keep going while         Increment by one;
+        for (int i = 0; i < arrayToLoopThrough.length; i++) {
+            counter += 1;
+        }
+
+        return counter == 3;
+    }
+
+    /*
+    11. This loop is counting incorrectly. What needs to change in the loop for it to count properly?
+    */
+    public boolean returnCountCorrectTimes() {
+        int[] arrayToLoopThrough = { 4, 23, 9, 4, 33 }; //length is 5
+
+        int counter = 0;
+
+        //     Start;       Keep going while         Increment by one;
+        for (int i = 0; i < arrayToLoopThrough.length; i++) {
+            counter = counter + 1;
+        }
+
+        return counter == 5;
+    }
+
+    /*
+    12. We want this loop to only count every other item starting at zero. What needs to change in the loop for
+        it to do that?
+    */
+    public boolean returnSumEveryOtherNumber() {
+        int[] arrayToLoopThrough = { 4, 3, 4, 1, 4, 6 };
+
+        int sum = 0;
+
+        //     Start;       Keep going while       Increment by;
+        for (int i = 0; i < arrayToLoopThrough.length; i = i + 2) { //increment by 2 to skip every other item
+            sum = sum + arrayToLoopThrough[i];
+        }
+
+        return sum == 12;
+    }
+}
