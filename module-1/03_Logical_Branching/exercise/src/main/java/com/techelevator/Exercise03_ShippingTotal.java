@@ -53,11 +53,11 @@ public class Exercise03_ShippingTotal {
             return weightPounds * UP_TO_40_LB_RATE;
 
         }
-        else if(weightPounds > 40){
+        else {
             return weightPounds * OVER_40_LB_RATE;
         }
 
-        return 0.0;
+
     }
 
     /*
@@ -79,8 +79,20 @@ public class Exercise03_ShippingTotal {
      * calculateShippingTotal(45, true) ➔ 30.375
      */
     public double calculateShippingTotal(int weightPounds, boolean hasDiscount) {
+        double costOfShipping = 0.0;
+        if(weightPounds <= 40){
+            costOfShipping = weightPounds * UP_TO_40_LB_RATE;
 
-        return 0.0;
+        }
+        else{
+            costOfShipping = weightPounds * OVER_40_LB_RATE;
+        }
+            if(hasDiscount){
+                return costOfShipping * 0.9;
+
+            }
+        return costOfShipping;
+
     }
 
 }

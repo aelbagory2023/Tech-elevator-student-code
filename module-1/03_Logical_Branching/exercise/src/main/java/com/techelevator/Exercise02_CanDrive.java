@@ -64,7 +64,7 @@ public class Exercise02_CanDrive {
                 }
             }
         }
-        return true;
+        return false;
 
     }
 }
