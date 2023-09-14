@@ -79,7 +79,7 @@ public class Exercise03_ShippingTotal {
      * calculateShippingTotal(45, true) ➔ 30.375
      */
     public double calculateShippingTotal(int weightPounds, boolean hasDiscount) {
-        if(weightPounds <)
+
         return 0.0;
     }
 
