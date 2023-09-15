@@ -94,6 +94,18 @@ public class Exercise01_StoreOrders {
     getCheesePizzaRevenue([SMALL_PEPPERONI, MEDIUM_PEPPERONI]) → 0
      */
     public int getCheesePizzaRevenue(int[] orders) {
-        return 0;
+        int pizzaRevenue = 0;
+        for(int i= 0; i < orders.length;i++){
+           if(orders[i] == SMALL_CHEESE ) {
+               pizzaRevenue = pizzaRevenue + 8;
+           }
+           if(orders[i] == MEDIUM_CHEESE){
+               pizzaRevenue = pizzaRevenue + 11;
+           }
+           if(orders[i] == LARGE_CHEESE){
+               pizzaRevenue = pizzaRevenue + 14;
+           }
+        }
+        return pizzaRevenue;
     }
 }
