@@ -5,7 +5,7 @@ import org.junit.runners.MethodSorters;
 import static org.junit.Assert.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class ExercisesTest {
+public class cisesTest {
 
 	@Test
 	public void Exercise00_isRainExpected() {
@@ -86,7 +86,7 @@ public class ExercisesTest {
 	public void Exercise02_canDrive_2() {
 		Exercise02_CanDrive exercise = new Exercise02_CanDrive();
 
-		assertTrue("canDrive(true, true, 42) should return true", exercise.canDrive(true, true, 42));
+		assertTrue("canDrive(true, true, 42) should return true", exercise.canDrive(true, true, 42));}
 		assertTrue("canDrive(true, true, 21) should return true", exercise.canDrive(true, true, 21));
 		assertFalse("canDrive(true, true, 20) should return false", exercise.canDrive(true, true, 20));
 		assertFalse("canDrive(true, false, 42) should return false", exercise.canDrive(true, false, 42));

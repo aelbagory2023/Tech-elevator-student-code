@@ -43,7 +43,11 @@ public class Exercise01_StoreOrders {
 	 createOrder() → [10, 40, 31, 41]
      */
     public int[] createOrder() {
-        return new int[] {};
+        int [] order = new int [4];
+            order = new int[]{SMALL_CHEESE, CALZONE, LARGE_PEPPERONI, SPAGHETTI_PIE} ;
+
+
+        return order;
     }
 
     /*
@@ -61,7 +65,18 @@ public class Exercise01_StoreOrders {
     getCalzoneSales([]) → 0
      */
     public int getCalzoneSales(int[] orders) {
-        return 0;
+        int calzoneCount = 0;
+        for(int loop = 0; loop < orders.length; loop++ ){
+            if(orders[loop]== CALZONE){
+                calzoneCount = calzoneCount + 1;
+            }
+
+
+        }
+
+
+        return calzoneCount;
+
     }
 
     /*
@@ -71,7 +86,7 @@ public class Exercise01_StoreOrders {
         * Each large cheese pizza costs $14.
 
     Implement the logic to return the total revenue of all cheese pizzas when given
-    an array representing each item that her customers ordered that day.
+    an array representing each item that her customers ordered that                     day.
 
     Examples:
     getCheesePizzaRevenue([SMALL_CHEESE]) → 8
