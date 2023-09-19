@@ -198,7 +198,7 @@ public class Exercises {
 		if(str.length() < 2){
 			return "";
 		} else {
-		return str.substring(1,str.length() - 1);
+		return str.substring(1,str.length() - 1);}
 
 	}
 
@@ -220,7 +220,8 @@ public class Exercises {
 	 endsLy("oddy") → false
 	 */
 	public boolean endsLy(String str) {
-		return false;
+
+		return str.endsWith("ly");
 	}
 
 	/*
@@ -254,7 +255,11 @@ public class Exercises {
 	 middleThree("solving") → "lvi"
 	 */
 	public String middleThree(String str) {
-		return null;
+		int length = str.length();
+		int middle = length / 2;
+
+		int startIndex = middle - 1;
+		return str.substring(startIndex,startIndex + 3);
 	}
 
 	/*
