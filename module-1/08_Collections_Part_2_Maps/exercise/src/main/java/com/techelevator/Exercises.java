@@ -34,6 +34,8 @@ public class Exercises {
 	 *
 	 */
 	public String animalGroupName(String animalName) {
+		Map<String, String> animals = new HashMap<String, String>();
+
 		return null;
 	}
 
@@ -76,7 +78,16 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> robPeterToPayPaul(Map<String, Integer> peterPaul) {
-		return null;
+		Integer petersMoney = peterPaul.get("Peter");
+		Integer paulsMoney = peterPaul.get("Paul");
+		if(petersMoney > 0 && paulsMoney <1000){
+			int transferAmount = petersMoney / 2;
+			peterPaul.put("Peter", petersMoney - transferAmount);
+			peterPaul.put("Paul", paulsMoney + transferAmount);
+		}
+
+
+		return peterPaul;
 	}
 
 	/*
@@ -148,6 +159,7 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Boolean> wordMultiple(String[] words) {
+
 		return null;
 	}
 

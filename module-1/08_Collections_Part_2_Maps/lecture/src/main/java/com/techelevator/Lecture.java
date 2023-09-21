@@ -13,7 +13,14 @@ public class Lecture {
 		System.out.println("####################");
 		System.out.println();
 
+		Map<String, String> nameToZip = new HashMap<String, String>();
+		nameToZip.put("Ahmed", "44123");
 
-	}
 
-}
+		Set<String> Keys = nameToZip.keySet();
+		{
+			for(String Key : Keys) {
+				System.out.println("The key " + Key + " has the value of:" + nameToZip.get(Keys));
+			}
+		}
+
