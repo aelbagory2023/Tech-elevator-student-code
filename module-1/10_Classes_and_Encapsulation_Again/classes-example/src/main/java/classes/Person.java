@@ -13,16 +13,32 @@ public class Person {
     private List<Person> friends = new ArrayList<>(); //instantiate the list when the object is made, otherwise it will be null
     private List<Pet> pets = new ArrayList<>(); //instantiate the list when the object is made, otherwise it will be null
 
-    //TODO: add a derived property to determine if the person can drink at tonight's happy hour
+    //add a derived property to determine if the person can drink at tonight's happy hour
+    public boolean getIsCanDrink() {
+        //return this.age >= 21;
+        if(this.age >= 21) {
+            return true;
+        }
+        return false;
+    }
 
-    //constructor
+    //constructors - 3 of them
+    public Person() {};
+
     public Person(String first, String last, int age) {
         this.firstName = first;
         this.lastName = last;
         this.age = age;
     }
 
-    //TODO: add a constructor that also sets the person's workplace when the object is instantiated
+    //add a constructor that also sets the person's workplace when the object is instantiated
+    public Person(String first, String last, int age, String workplace)
+    {
+        this.firstName = first;
+        this.lastName = last;
+        this.age = age;
+        this.workplace = workplace;
+    }
 
     //getters & setters
     public String getWorkplace() {
@@ -40,8 +56,26 @@ public class Person {
         return this.pets;
     }
 
-    //TODO: add getters and setters for first name and last name
+    //add getters and setters for first name and last name
+    public String getFirstName() {
+        return this.firstName;
+    }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getAge() {
+        return this.age;
+    }
 
     //methods - behavior that an object can do
     public void haveBirthday() {
@@ -63,5 +97,6 @@ public class Person {
         }
         return String.format("%s %s is %s years old.", this.firstName, this.lastName, this.age);
     }
+
 
 }

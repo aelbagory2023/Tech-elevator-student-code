@@ -24,7 +24,9 @@ public class Pet {
         return this.type;
     }
 
-    //TODO: answer this question: can a pet's species ("type") be changed, if nothing about the code in this class changes?
+    //answer this question: can a pet's species ("type") be changed,
+    // if nothing about the code in this class changes?
+    //ANSWER: no, because there is no setter for type
 
 
 
