@@ -1,6 +1,7 @@
 package com.techelevator;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class Exercises {
@@ -34,9 +35,32 @@ public class Exercises {
 	 *
 	 */
 	public String animalGroupName(String animalName) {
-		Map<String, String> animals = new HashMap<String, String>();
+		if(animalName == null) {
+			return "unknown";
+		}
 
-		return null;
+		Map<String, String> animals = new HashMap<String, String>();
+		animals.put("rhino","Crash");
+		animals.put("giraffe","Tower");
+		animals.put("elephant","Herd");
+		animals.put("lion","Pride");
+		animals.put("crow","Murder");
+		animals.put("pigeon","Kit");
+		animals.put("flamingo","Pat");
+		animals.put("deer", "Herd");
+		animals.put("dog", "Pack");
+		animals.put("crocodile", "Float");
+
+		String animalNamesInLowerCase = animalName.toLowerCase();
+		String groupName = animals.get(animalNamesInLowerCase);
+
+		if(groupName == null) {
+			return "unknown";
+		}
+
+
+
+		return groupName;
 	}
 
 	/*
@@ -62,7 +86,28 @@ public class Exercises {
 	 *
 	 */
 	public double isItOnSale(String itemNumber) {
-		return -1.0;
+		if(itemNumber == null) {
+			return 0.00;
+		}
+		if(itemNumber == "") {
+			return 0.00;
+		}
+
+
+		Map<String, Double> discountCodes = new HashMap<String, Double>();
+		discountCodes.put("kitchen4001", 0.20);
+		discountCodes.put("garage1070", 0.15);
+		discountCodes.put("livingroom", 0.10);
+		discountCodes.put("kitchen6073", 0.40);
+		discountCodes.put("bedroom3434", 0.60);
+		discountCodes.put("bath0073", 0.15);
+
+		String itemNumberInLowerCase = itemNumber.toLowerCase();
+		double discountCode = discountCodes.get(itemNumberInLowerCase);
+
+
+
+		return discountCode;
 	}
 
 	/*
@@ -100,21 +145,38 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> peterPaulPartnership(Map<String, Integer> peterPaul) {
-		return null;
+		Integer petersNetWorth = peterPaul.get("Peter");
+		Integer paulsNetWorth = peterPaul.get("Paul");
+		if(petersNetWorth == 0 || paulsNetWorth == 0){
+			return peterPaul;
+		}
+		if(petersNetWorth >= 5000 && paulsNetWorth >= 10000){
+			int petersNewNetWorth = (int) (petersNetWorth * 0.75);
+			int paulsNewNetWorth = (int) (paulsNetWorth * 0.75);
+			int partnership =(int)((petersNetWorth * 0.25) + (paulsNetWorth * 0.25));
+			System.out.println(partnership);
+
+			peterPaul.put("Peter",petersNewNetWorth);
+			peterPaul.put("Paul",paulsNewNetWorth);
+			peterPaul.put("peterPaulPartnership",partnership);
+
+		}
+
+		return peterPaul;
 	}
 
 	/*
 	 * Given an array of non-empty strings, return a Map<String, String> where, for every String in the array,
 	 * there is an entry whose key is the first character of the string.
-	 *
+				*
 	 * The value of the entry is the last character of the String. If multiple Strings start with the same letter, then the
-	 * value for that key should be the later String's last character.
-	 *
+				* value for that key should be the later String's last character.
+				*
 	 * beginningAndEnding(["code", "bug"]) → {"b": "g", "c": "e"}
 	 * beginningAndEnding(["code", "bug", "cat"]) → {"b": "g", "c": "t"}
 	 * beginningAndEnding(["muddy", "good", "moat", "good", "night"]) → {"g": "d", "m": "t", "n": "t"}
 	 */
-	public Map<String, String> beginningAndEnding(String[] words) {
+		public Map<String, String> beginningAndEnding(String[] words) {
 		return null;
 	}
 
