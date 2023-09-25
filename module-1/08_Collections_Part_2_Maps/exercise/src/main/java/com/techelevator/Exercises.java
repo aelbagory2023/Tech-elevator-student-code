@@ -103,11 +103,15 @@ public class Exercises {
 		discountCodes.put("bath0073", 0.15);
 
 		String itemNumberInLowerCase = itemNumber.toLowerCase();
-		double discountCode = discountCodes.get(itemNumberInLowerCase);
+		if(discountCodes.containsKey(itemNumberInLowerCase)) {
+			double discountCode = discountCodes.get(itemNumberInLowerCase);
+			return discountCode;
+		}
+		return 0;
 
 
 
-		return discountCode;
+
 	}
 
 	/*

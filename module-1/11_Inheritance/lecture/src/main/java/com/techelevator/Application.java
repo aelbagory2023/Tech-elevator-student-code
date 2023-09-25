@@ -16,6 +16,18 @@ public class Application {
         //....
         //....
         // This might go on until the auction runs out of time or hits a max # of bids
+System.out.println("The highest bid goes to: " + generalAuction.getHighBid().getBidder());
+ReserveAuction reserveAuction = new ReserveAuction("coffee Mug", 299);
+reserveAuction.placeBid(new Bid ("Tori", 300));
 
-    }
+System.out.println("The highest bid goes to: " + reserveAuction.getHighBid().getBidder());
+
+BuyoutAuction buyoutAuction = new BuyoutAuction("WhiteBoard Marker", 5000);
+buyoutAuction.placeBid(new Bid("dave", 200));
+        buyoutAuction.placeBid(new Bid("Ben", 215));
+        buyoutAuction.placeBid(new Bid("Nate", 17000));
+System.out.println(buyoutAuction.endAuction());
 }
+
+}
+
