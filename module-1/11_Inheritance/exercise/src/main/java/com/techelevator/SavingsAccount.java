@@ -13,10 +13,10 @@ public class SavingsAccount extends BankAccount {
         int remainingBalance = getBalance() - amountToWithdraw;
         if (remainingBalance <= 150) {
             return remainingBalance - 2;
-        } else if(remainingBalance <= -100) {
+        } else if(remainingBalance >= 150) {
             return getBalance();
         }
-        return super.withdraw(amountToWithdraw + 10);
+       return remainingBalance;
 
     }
 }
