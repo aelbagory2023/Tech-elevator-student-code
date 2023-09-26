@@ -1,9 +1,11 @@
 package com.techelevator.farm;
 
-public class Chicken extends FarmAnimal {
+import java.math.BigDecimal;
+
+public class Chicken extends FarmAnimal implements Singable {
 
 	public Chicken() {
-		super("Chicken", "cluck!");
+		super("Chicken", "cluck!", new BigDecimal("15.00"));
 	}
 
 	public void layEgg() {

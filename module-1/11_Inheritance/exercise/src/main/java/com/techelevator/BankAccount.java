@@ -25,9 +25,15 @@ public class BankAccount {
          return balance;
      }
     public int deposit(int amountToDeposit) {
+         if(amountToDeposit < 0) {
+             return balance;
+         }
         return balance += (amountToDeposit);
     }
     public int withdraw(int amountToWithdraw) {
+         if(amountToWithdraw < 0) {
+             return balance;
+         }
         return balance -= amountToWithdraw;
 
 }
