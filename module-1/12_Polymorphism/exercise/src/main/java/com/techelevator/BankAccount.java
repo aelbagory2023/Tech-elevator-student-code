@@ -45,12 +45,15 @@ public class BankAccount implements Accountable {
     }
 
     public int transferFunds(BankAccount destinationAccount, int transferAmount) {
-        if (transferAmount >= 0) {
-            return destinationAccount.balance + transferAmount;
-        } else if (transferAmount < 0) {
-            return destinationAccount.balance - transferAmount;
+        if (transferAmount > 0 && getBalance() >= transferAmount) {
+            this.balance -= transferAmount;
+            destinationAccount.balance +=transferAmount;
+       //     return this.balance;
+       // } else if (transferAmount < 0 && destinationAccount.balance > -transferAmount) {
+       //     destinationAccount.balance -= -transferAmount;
+       //     this.balance += -transferAmount;
         }
-        return destinationAccount.balance;
+        return this.balance;
 
 
     }

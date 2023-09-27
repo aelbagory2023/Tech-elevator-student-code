@@ -26,9 +26,17 @@ public class CreditCardAccount implements Accountable{
     }
 
     public int pay(int amountToPay) {
-        return (debt * -1) + (amountToPay);
+        if(amountToPay > 0){
+            debt -= amountToPay;
+        }
+
+        return debt;
     }
     public int charge(int amountToCharge) {
-        return debt - amountToCharge;
+        if(amountToCharge > 0) {
+            debt += amountToCharge;
+        }
+
+        return debt;
     }
 }

@@ -3,6 +3,7 @@ package com.techelevator.farm;
 public class FarmAnimal implements Singable {
 	private String name;
 	private String sound;
+	private boolean isAsleep;
 
 	public FarmAnimal(String name, String sound) {
 		this.name = name;
@@ -13,7 +14,15 @@ public class FarmAnimal implements Singable {
 		return name;
 	}
 	public String getSound( ) {
-		return sound;
+		if(this.isAsleep) {
+			return "Zzzzz...";
+		}
+		return this.sound;
 	}
+	public void sleep(boolean isAsleep) {
+		this.isAsleep = isAsleep;
+
+	}
+	
 
 }
