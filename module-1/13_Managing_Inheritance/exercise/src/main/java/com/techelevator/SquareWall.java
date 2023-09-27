@@ -1,19 +1,15 @@
 package com.techelevator;
 
-public class SquareWall extends Wall {
-    private int sideLength;
+public class SquareWall extends RectangleWall {
+
     public SquareWall(String name, String color, int sideLength) {
-        super(name, color);
-        this.sideLength = sideLength;
+        super(name, color, sideLength, sideLength);
+
 
     }
-    @Override
-    public int getArea() {
-        return sideLength * sideLength;
 
-    }
     public String toString() {
-        return super.getName() + " (" + sideLength + "x" + sideLength + ") square";
+        return super.getName() + " (" + getLength() + "x" + getHeight() + ") square";
     }
 
 }

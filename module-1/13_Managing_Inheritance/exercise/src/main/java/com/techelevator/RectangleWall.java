@@ -4,7 +4,7 @@ public class RectangleWall extends Wall {
     private int length;
     private int height;
 
-    public RectangleWall(String name, String color, int height, int length) {
+    public RectangleWall(String name, String color, int length, int height) {
         super(name, color);
         this.height = height;
         this.length = length;
@@ -12,13 +12,27 @@ public class RectangleWall extends Wall {
     }
     @Override
     public int getArea() {
-        return length * height;
+        return height * length;
 
     }
     public String toString() {
-        return super.getName() + " (" + height + "x" + length + ") rectangle";
+        return super.getName() + " (" + length + "x" + height + ") rectangle";
     }
+    public int getLength() {
+        return length;
+    }
+    public void setLength(int length){
+        this.length = length;
+    }
+    public int getHeight() {
+        return height;
+    }
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
 
 
 
 }
+   // RectangleWall rectangleWall = new RectangleWall("recWall","red", 10, 20 );
