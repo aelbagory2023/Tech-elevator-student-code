@@ -95,6 +95,7 @@ public class LectureTest {
 		/* The fail method will cause a test to fail */
 
 		Assert.fail("This is how I can force a test to fail");
+
 	}
 
 	public void this_method_is_not_a_test_because_it_does_not_have_the_Test_annotation() {
