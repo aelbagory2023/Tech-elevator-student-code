@@ -20,27 +20,62 @@ public class JdbcParkDao implements ParkDao {
 
     @Override
     public int getParkCount() {
+
         return 0;
+
     }
     
     @Override
     public LocalDate getOldestParkDate() {
-        return null;
+        LocalDate oldestParkDate = null;
+        String sql = "SELECT MIN(date_established) AS oldest_date FROM park;";
+       SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+       if(results.next()) {
+           oldestParkDate = results.getDate("oldest_date").toLocalDate();
+       }
+
+
+
+
+
+        return oldestParkDate;
+
+
+
     }
     
     @Override
     public double getAverageParkArea() {
-        return 0.0;
+        double averageArea = 0.0;
+        String sql = "SELECT AVG(area) AS average_area FROM park;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        if(results.next()) {
+            averageArea = results.getDouble("average_area");
+        }
+        return averageArea;
     }
     
     @Override
     public List<String> getParkNames() {
-        return new ArrayList<>();
+        List<String> parkNames = new ArrayList<String>();
+        String sql = "SELECT park_name FROM park;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while(results.next()) {   //read the results line by line while there are results to read
+            String name = results.getString("park_name"); //turn the sql data into a java datatype
+            parkNames.add(name);
+        }
+        return parkNames;
     }
     
     @Override
     public Park getRandomPark() {
-        return new Park();
+        Park randomPark = new Park();
+        String sql = "SELECT * FROM park ORDER BY RANDOM() LIMIT 1;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        if(results.next()) {
+            randomPark = mapRowToPark(results);
+        }
+        return randomPark;
     }
 
     @Override
@@ -50,7 +85,12 @@ public class JdbcParkDao implements ParkDao {
 
     @Override
     public Park getParkById(int parkId) {
-        return new Park();
+        Park parkById = new Park();
+        String sql = "SELECT * FROM park WHERE park_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        if(results.next()) {
+            parkById = mapRowToPark(results);
+        }return parkById();
     }
 
     @Override
@@ -61,7 +101,13 @@ public class JdbcParkDao implements ParkDao {
     @Override
     public List<Park> getParksByName(String name, boolean useWildCard) { return new ArrayList<>(); }
 
-    private Park mapRowToPark(SqlRowSet rowSet) {
+    private Park mapRowToPark(SqlRowSet sqldata) {
+        Park javapark = new Park();
+        javapark.setParkId(sqldata.getInt("park_id"));
+        javapark.setParkName(sqldata.getString("park_name"));
+        javapark.setDateEstablished(sqldata.getDate("date_established").toLocalDate());
+        javapark.setArea(sqldata.getDouble("area"));
+        javapark.setHasCamping(sqldata.getBoolean("has_camping"));
         return new Park();
     }
 }

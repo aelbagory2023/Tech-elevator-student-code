@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class USCitiesAndParksCLI {
+public class iUSCitiesAndParksCLI {
 
     private final Scanner userInput = new Scanner(System.in);
 
