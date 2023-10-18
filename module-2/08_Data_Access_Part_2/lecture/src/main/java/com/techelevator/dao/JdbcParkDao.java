@@ -2,6 +2,8 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Park;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
@@ -94,22 +96,52 @@ public class JdbcParkDao implements ParkDao {
 
     @Override
     public Park createPark(Park park) {
+
         throw new DaoException("createPark() not implemented");
     }
 
     @Override
     public Park updatePark(Park park) {
-        throw new DaoException("updatePark() not implemented");
+        Park updatedPark = null;
+
+        String sql = "UPDATE park SET park_name = ?, area = ?, has_camping = ? " +
+                " Where park_id = ?;";
+        try (
+                int numberOfRows = jdbcTemplate.update(sql,park.getParkName(), park.getDateEstablished(), park.getArea(), park.getHasCamping(), park.getParkId();
+                )
+            catch (CannotGetJdbcConnectionException e ) {
+                    throw new DaoException("unable to connec to server or database", e);
+
+        })
+            catch (DataIntegrityViolationException e) {
+            throw new DaoException("data integrity violation", e);
+
+        }
+        return updatedPark;
     }
 
     @Override
     public int deleteParkById(int parkId) {
-        throw new DaoException("deleteParkById() not implemented");
+    int numberOfRows = 0;
+    String parkStatesSql = "DELETE FROM park WHERE park_id = ?;";
+    String parKSql = "DELETE FROM park WHERE park_id = ?;";
+    try {
+        jdbcTemplate.update(parkStatesSql, parkId);
+        numberOfRows = jdbcTemplate.update(parKSql,parkId)
+    }
+    catch (CannotGetJdbcConnectionException e) {
+        throw new DaoException("unable to connect to server or database", e);
+    }
+    catch ()
     }
 
     @Override
     public void linkParkState(int parkId, String stateAbbreviation) {
-        throw new DaoException("linkParkState() not implemented");
+String sql = "INSERT INTO parK_state (park_id, state_abbreviation) VALUES (?,?);";
+    try {
+        jdbcTemplate.update(sql,parkId,)
+    }
+
     }
 
     private Park mapRowToPark(SqlRowSet rowSet) {
