@@ -1,21 +1,21 @@
 Bug 1
 -----
-Test that demonstrates problem:
+Test that demonstrates problem: getTimesheetsByEmployeeId_with_valid_employee_id_returns_list_of_timesheets_for_employee
 
-Expected output:
+Expected output:3
 
-Actual output:
+Actual output: 1
 
 How did you fix this bug?
 
 
 Bug 2
 -----
-Test that demonstrates problem:
+Test that demonstrates problem: getTimesheetsByProjectId_with_valid_id_returns_list_of_all_timesheets_for_project
 
-Expected output:
+Expected output: 2
 
-Actual output:
+Actual output: 3
 
 How did you fix this bug?
 
