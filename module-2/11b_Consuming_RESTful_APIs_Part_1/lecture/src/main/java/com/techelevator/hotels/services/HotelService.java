@@ -3,6 +3,7 @@ package com.techelevator.hotels.services;
 import com.techelevator.hotels.model.City;
 import com.techelevator.hotels.model.Hotel;
 import com.techelevator.hotels.model.Review;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 public class HotelService {
@@ -11,27 +12,29 @@ public class HotelService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     public Hotel[] listHotels() {
-        return null;
+        return restTemplate.getForObject(API_BASE_URL + "/hotels", Hotel[].class);
+
     }
 
     public Review[] listReviews() {
-        return null;
+       return restTemplate.getForObject(API_BASE_URL + "/reviews", Review[].class);
     }
 
     public Hotel getHotelById(int id) {
-        return null;
+        return restTemplate.getForObject(API_BASE_URL + "/hotels/" + id, Hotel.class);
     }
 
     public Review[] getReviewsByHotelId(int hotelId) {
-        return null;
+
+      return restTemplate.getForObject(API_BASE_URL + "/hotels/" + hotelId + "/reviews", Review[].class)  ;
     }
 
     public Hotel[] getHotelsByStarRating(int stars) {
-        return null;
+        return restTemplate.getForObject(API_BASE_URL + "/hotels?stars=" + stars, Hotel[].class);
     }
 
     public City getWithCustomQuery(){
-        return null;
+        return restTemplate.getForObject()
     }
 
 }
