@@ -8,6 +8,9 @@ import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 
 
+import java.net.http.HttpHeaders;
+
+
 public class HotelService {
 
     private static final String API_BASE_URL = "http://localhost:3000";
@@ -16,9 +19,8 @@ public class HotelService {
     /**
      * Create a new reservation in the hotel reservation system
      */
-    public Reservation addReservation(Reservation newReservation) {
-        // TODO: Implement method
-        return null;
+    public Reservation addReservation(Reservation newReservation)
+        HttpHeaders headers = new org.springframework.http.HttpHeaders();
     }
 
     /**
@@ -26,16 +28,15 @@ public class HotelService {
      * reservation
      */
     public boolean updateReservation(Reservation updatedReservation) {
-        // TODO: Implement method
-        return false;
+        HttpHeaders headers = new HttpHeaders();
+
     }
 
     /**
      * Delete an existing reservation
      */
     public boolean deleteReservation(int id) {
-        // TODO: Implement method
-        return false;
+
     }
 
     /* DON'T MODIFY ANY METHODS BELOW */
