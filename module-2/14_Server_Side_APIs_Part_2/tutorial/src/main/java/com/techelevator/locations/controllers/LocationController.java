@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -37,5 +38,8 @@ public class LocationController {
     public Location add(@RequestBody Location location) {
         return locationDao.createLocation(location);
     }
+    @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
+    public Location update(@Valid @RequestBody Location location, @PathVariable int id) {
 
+    }
 }
