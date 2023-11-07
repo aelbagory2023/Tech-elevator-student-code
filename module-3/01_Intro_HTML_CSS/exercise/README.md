@@ -60,7 +60,7 @@ After completing this exercise, you'll understand:
  
  ### Document structure
 
-* Your document must have a meaningful title that appears as the browser tab's text.
+* Your document must have a meaningful title that appears as the browser tab's text.d
 * Your document must link to a separate `.css` file which contains style rules.
 * Your document must have a background color that's different than the default background of white.
   * You may need to change the text color so it stands out from the new background.

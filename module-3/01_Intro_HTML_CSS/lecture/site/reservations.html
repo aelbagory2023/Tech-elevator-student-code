@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservations</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header>
+        <h1> Bits and Bytes </h1>
+        <p> A fine dining establishment </p>
+    </header>
+<nav>
+    <a href="index.html"> Back to Home page</a>
+</nav>
+    <main>
+        <h2> Reservation Form</h2>
+    </main>
+
+    <form method="post" action="/api/Reservation">
+        <div>
+            <label for="ReservationName">Name:</label>
+            <input type="text" id="ReservationName" />
+
+        </div>
+        <div>
+            <label for="ReservationPhone">Phone:</label>
+            <input type="text" id="ReservationPhone" />
+
+        </div>
+        <div>
+            <label for="numberOfGuests">Number Of Guests:</label>
+            <input type="number" id="numberOfGuests" />
+
+        </div>
+
+        <div>
+
+            <label for="ReservationDate">Date:</label>
+            <input type="date" id="ReservationDate" />
+
+        </div>
+        <div>
+
+            <label for="ReservationTime">Time:</label>
+            <input type="time" id="ReservationTime" />
+
+        </div>
+        <div>
+
+            <label for="isSpecialOccasion">Special Occasion:</label>
+            <input type="checkbox" id="isSpecialOccasion" />
+
+        </div>
+        <div>
+
+           <input type="submit"/>
+
+        </div>
+
+
+
+
+    </form>
+</body>
+
+</html>
