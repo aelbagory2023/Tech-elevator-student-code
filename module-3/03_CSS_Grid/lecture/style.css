@@ -1,11 +1,22 @@
 
-
+.container {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-areas: 
+    "header header header"
+    "nav content aside"
+    "footer footer footer";
+    width: 50vh;
+}
 
 /***** enter grid CSS above this line *****/
 
 * {
     box-sizing: border-box;
     font-family: Tahoma, Verdana, Segoe, sans-serif;
+}
+main {
+    grid-area: content;
 }
 
 html {
@@ -27,21 +38,25 @@ body {
 }
 
 header {
+    grid-area: header;
     padding: 0 10px;
     text-align: center;
 }
 
 nav#menu-nav {
+    grid-area: nav;
     text-align: center;
 }
 
 aside#upcoming-events {
+    grid-area: aside;
     font-size: 1.1em;
     text-align: right;
     padding-right: 10px;
 }
 
 footer {
+    grid-area: footer;
     font-size: 0.75em;
     padding: 10px;;
 }
@@ -124,4 +139,21 @@ div.food-item img {
 }
 div.food-item p {
     line-height: 2em;
+}
+ @media screen and (max-width:768px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "header"
+        "content"
+         "nav"
+         "aside"
+        "footer";
+    }
+  body {
+    background-color: antiquewhite;
+  } 
+  * {
+    font-family: cursive;
+  } 
 }
