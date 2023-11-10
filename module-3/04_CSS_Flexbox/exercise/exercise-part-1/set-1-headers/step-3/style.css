@@ -6,7 +6,20 @@ body {
 header {
   background-color: #F0F0F0;
   padding: 20px;
+ display: flex;
+ flex-direction: row;
+
 }
+header > nav > ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+header >nav {
+  flex-grow: 1;
+}
+
+
 
 .logo {
   width: 140px;

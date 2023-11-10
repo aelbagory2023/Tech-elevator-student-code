@@ -1,6 +1,11 @@
 body {
   margin: 20px;
-  padding: 0
+  padding: 0;
+  
+}
+header > nav > ul {
+  display: flex;
+  flex-direction: row;
 }
 
 header {

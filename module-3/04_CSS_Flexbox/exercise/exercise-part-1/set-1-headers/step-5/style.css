@@ -6,6 +6,18 @@ body {
 header {
   background-color: #F0F0F0;
   padding: 20px;
+  display: flex;
+  flex-direction: row;
+}
+header > nav > ul {
+  display: flex;
+  flex-direction: row;
+}
+body > header > a.my-account {
+  justify-content: flex-end;
+}
+header > div.spacer {
+  flex-grow: 1;
 }
 
 .logo {

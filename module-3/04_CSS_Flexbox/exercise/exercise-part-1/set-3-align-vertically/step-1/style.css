@@ -3,7 +3,11 @@ body {
   padding: 0;
   font-size: 2.5em;
 }
-
+div.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 .container {
   background-color: #F0F0F0;
   height: 500px;
