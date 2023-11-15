@@ -37,53 +37,39 @@ const reviews = [
  * once you have the element you can add the product name to the span.
  */
 function setPageTitle() {
-
-
+  const pageTitle = document.getElementById('page-title');
+  pageTitle.querySelector('.name').innerText = bookName;
 }
 
 /**
  * Add the product description to the page.
  */
 function setPageDescription() {
-
+  document.querySelector('.description').innerText = description;
 }
 
 /**
- * Display all of the reviews on the page.
- * Loop over the array of reviews and use some helper functions
- * to create the elements needed for the markup and add them to the DOM.
+ * Use a template to display all of the reviews on the web page
  */
-function displayReviews() {}
-
-/**
- * Create a new h2 element with the name of the reviewer and append it to
- * the parent element that is passed to me.
- *
- * @param {HTMLElement} parent: The element to append the reviewer to
- * @param {string} name The name of the reviewer
- */
-function addReviewer(parent, name) {}
-
-/**
- * Add the rating div along with a star image for the number of ratings 1-5
- * @param {HTMLElement} parent
- * @param {Number} numberOfStars
- */
-function addRating(parent, numberOfStars) {}
-
-/**
- * Add an h3 element along with the review title
- * @param {HTMLElement} parent
- * @param {string} title
- */
-function addTitle(parent, title) {}
-
-/**
- * Add the product review
- * @param {HTMLElement} parent
- * @param {string} review
- */
-function addReview(parent, review) {}
+function displayReviews() {
+  if ('content' in document.createElement('template')) {
+    const main = document.getElementById('main');
+    reviews.forEach((review) => {
+      const tmpl = document.getElementById('review-template').content.cloneNode(true);
+      tmpl.querySelector('h2').innerText = review.reviewer;
+      tmpl.querySelector('h3').innerText = review.title;
+      tmpl.querySelector('p').innerText = review.review;
+      // there will always be 1 star because it is a part of the template
+      for (let i = 1; i < review.rating; ++i) {
+        const img = tmpl.querySelector('img').cloneNode();
+        tmpl.querySelector('.rating').appendChild(img);
+      }
+      main.appendChild(tmpl);
+    });
+  } else {
+    console.error('Your browser does not support templates');
+  }
+}
 
 // set the product reviews page title
 setPageTitle();
