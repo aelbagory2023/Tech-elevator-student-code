@@ -12,7 +12,6 @@ const groceries = [
   { id: 9, name: 'Salad', completed: false },
   { id: 10, name: 'Tea', completed: false }
 ];
-
 /**
  * This function will get a reference to the title and set its text to the value
  * of the pageTitle variable that was set above.
@@ -36,3 +35,45 @@ function displayGroceries() {
     ul.appendChild(li);
   });
 }
+document.addEventListener("DOMContentLoaded", () => {
+setPageTitle();
+displayGroceries();
+
+const groceryItems = document.querySelectorAll('li');
+
+groceryItems.forEach((item) => {
+  item.addEventListener('click', () => {
+    if (!item.classList.contains('completed')) {
+      item.classList.add('completed');
+      item.querySelector('i').classList.add('completed');
+    }
+  });
+  item.addEventListener('dblclick', () => {
+    if (item.classList.contains('completed')) {
+      item.classList.remove('completed');
+      item.querySelector('i').classList.remove('completed');
+    }
+  });
+  const allItemsIncomplete = document.getElementById('toggleAll');
+allItemsIncomplete.addEventListener('click', () => {
+  groceryItems.forEach((item) => {
+    item.classList.add('completed');
+    allItemsIncomplete.textContent = 'Mark All Incomplete';
+
+  });
+  allItemsIncomplete.addEventListener('click', () => {
+    if (item.classList.contains('completed')) {
+      item.classList.remove('completed');
+      item.querySelector('i').classList.remove('completed');
+      allItemsIncomplete.textContent = 'Mark All Complete';
+    }
+  });
+});
+});
+
+
+
+
+
+
+});
