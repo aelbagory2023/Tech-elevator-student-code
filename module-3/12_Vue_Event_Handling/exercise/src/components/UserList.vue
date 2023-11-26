@@ -15,7 +15,7 @@
       <tbody>
         <tr>
           <td>
-            <input type="checkbox" id="selectAll" />
+            <input type="checkbox" id="selectAll" @change="checkAll()"/>
           </td>
           <td>
             <input type="text" id="firstNameFilter" v-model="filter.firstName" />
@@ -44,7 +44,7 @@
           v-bind:class="{ deactivated: user.status === 'Inactive' }"
         >
           <td>
-            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" />
+            <input type="checkbox" v-model="user.selected" @change="checked(user)"/>
           </td>
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
@@ -52,38 +52,50 @@
           <td>{{ user.emailAddress }}</td>
           <td>{{ user.status }}</td>
           <td>
-            <button class="btnActivateDeactivate">Activate or Deactivate</button>
+            
+            <button class="btnActivateDeactivate" @click="toggleUserStatus(user)">
+            <span v-if="user.status === 'Active'">Deactivate</span>
+            <span v-if="user.status !== 'Active'">Activate</span>
+           
+
+            </button>
+            
+            
+            
+             
+            
+           
           </td>
         </tr>
       </tbody>
     </table>
 
     <div class="all-actions">
-      <button>Activate Users</button>
-      <button>Deactivate Users</button>
-      <button>Delete Users</button>
+      <button @click="activateUsers()">Activate Users</button>
+      <button @click="deactivateUsers()">Deactivate Users</button>
+      <button @click="deleteUsers()">Delete Users</button>
     </div>
 
-    <button>Add New User</button>
+    <button v-on:click="toggleIsFormShown">Add New User</button>
 
-    <form id="frmAddNewUser">
+    <form id="frmAddNewUser" v-show="isFormShown">
       <div class="field">
         <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstName" />
+        <input type="text" id="firstName" name="firstName" v-model="newUser.firstName"/>
       </div>
       <div class="field">
         <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastName" />
+        <input type="text" id="lastName" name="lastName" v-model="newUser.lastName"/>
       </div>
       <div class="field">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" />
+        <input type="text" id="username" name="username" v-model="newUser.username"/>
       </div>
       <div class="field">
         <label for="emailAddress">Email Address:</label>
-        <input type="text" id="emailAddress" name="emailAddress" />
+        <input type="text" id="emailAddress" name="emailAddress" v-model="newUser.emailAddress"/>
       </div>
-      <button type="submit" class="btn save">Save User</button>
+      <button type="submit" class="btn save" v-on:click.prevent="addNewUser">Save User</button>
     </form>
   </div>
 </template>
@@ -92,21 +104,27 @@
 export default {
   data() {
     return {
+     
+      selectedUserId: [],
+      isFormShown: false,
       filter: {
         firstName: "",
         lastName: "",
         username: "",
         emailAddress: "",
-        status: ""
+        status: "",
+        selected: ""
       },
+      allSelected: false,
       nextUserId: 7,
       newUser: {
-        id: null,
+        id: "",
         firstName: "",
         lastName: "",
         username: "",
         emailAddress: "",
-        status: "Active"
+        status: "Active",
+        selected: false
       },
       users: [
         {
@@ -115,7 +133,8 @@ export default {
           lastName: "Smith",
           username: "jsmith",
           emailAddress: "jsmith@gmail.com",
-          status: "Active"
+          status: "Active",
+          selected: false
         },
         {
           id: 2,
@@ -123,7 +142,8 @@ export default {
           lastName: "Bell",
           username: "abell",
           emailAddress: "abell@yahoo.com",
-          status: "Active"
+          status: "Active",
+          selected: false
         },
         {
           id: 3,
@@ -131,7 +151,8 @@ export default {
           lastName: "Best",
           username: "gbest",
           emailAddress: "gbest@gmail.com",
-          status: "Inactive"
+          status: "Inactive",
+          selected: false
         },
         {
           id: 4,
@@ -139,7 +160,8 @@ export default {
           lastName: "Carter",
           username: "bcarter",
           emailAddress: "bcarter@gmail.com",
-          status: "Active"
+          status: "Active",
+          selected: false
         },
         {
           id: 5,
@@ -147,7 +169,8 @@ export default {
           lastName: "Jackson",
           username: "kjackson",
           emailAddress: "kjackson@yahoo.com",
-          status: "Active"
+          status: "Active",
+          selected: false
         },
         {
           id: 6,
@@ -155,7 +178,8 @@ export default {
           lastName: "Smith",
           username: "msmith",
           emailAddress: "msmith@foo.com",
-          status: "Inactive"
+          status: "Inactive",
+          selected: false
         }
       ]
     };
@@ -163,6 +187,73 @@ export default {
   methods: {
     getNextUserId() {
       return this.nextUserId++;
+    },
+    toggleIsFormShown() {
+      this.isFormShown = !this.isFormShown;
+    },
+    addNewUser() {
+      let newUserObject = this.newUser;
+      newUserObject.id = this.getNextUserId();
+      console.log(newUserObject.id);
+      this.users.unshift(newUserObject);
+      console.log(this.newUser);
+      this.resetForm();
+    },
+    resetForm() {
+      this.newUser = {
+        id: "",
+        firstName: "",
+        lastName: "",
+        username: "",
+        emailAddress: "",
+        status: "Active",
+        selected: false
+      };
+      this.toggleIsFormShown();
+    },
+    toggleUserStatus(user) {
+      if(user.status === 'Active') {
+        user.status = 'Inactive';
+      } else {
+        user.status = 'Active'
+      } 
+      console.log(user.selected)
+    },
+    deleteUsers() {
+      this.users = this.users.filter((user) => {
+        return user.selected === false;
+      })
+
+    },
+    activateUsers() {
+      this.users.forEach((user) => {
+        if(user.selected === true) {
+          user.status = 'Active'
+        }
+      })
+    },
+    deactivateUsers() {
+      this.users.forEach((user) => {
+        if(user.selected === true) {
+          user.status = 'Inactive'
+        }
+      })
+    },
+    checked(user) {
+      if(user.selected === true) {
+        user.selected = false;
+      } else {
+        user.selected = true
+      } 
+    },
+    checkAll() {
+      this.users.forEach((user) => {
+        if(this.allSelected === true) {
+          user.selected = false;
+        } else {
+          user.selected = true;
+        }
+    })
     }
   },
   computed: {
@@ -204,7 +295,8 @@ export default {
       return filteredUsers;
     }
   }
-};
+}
+
 </script>
 
 <style scoped>

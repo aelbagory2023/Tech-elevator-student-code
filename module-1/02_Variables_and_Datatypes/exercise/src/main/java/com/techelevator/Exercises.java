@@ -12,7 +12,7 @@ public class Exercises {
 		int birdsOnABranch = 4;
 		int birdsThatFlyAway = 1;
 		int birdsRemaining = birdsOnABranch - birdsThatFlyAway;
-
+            birdsOnABranch - 1
         /* Exercise 2
         2. There are 6 birds and 3 nests. How many more birds are there than
         nests?
