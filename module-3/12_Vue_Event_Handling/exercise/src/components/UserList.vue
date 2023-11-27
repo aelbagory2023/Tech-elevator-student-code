@@ -108,6 +108,7 @@ export default {
       selectedUserId: [],
       isFormShown: false,
       filter: {
+        id: "",
         firstName: "",
         lastName: "",
         username: "",
@@ -231,6 +232,7 @@ export default {
           user.status = 'Active'
         }
       })
+      this.clearCheckboxes();
     },
     deactivateUsers() {
       this.users.forEach((user) => {
@@ -238,23 +240,22 @@ export default {
           user.status = 'Inactive'
         }
       })
+      this.clearCheckboxes();
     },
+    clearCheckboxes() {
+  this.users.forEach((user) => {
+    user.selected = false;
+  })
+},
     checked(user) {
-      if(user.selected === true) {
-        user.selected = false;
-      } else {
-        user.selected = true
-      } 
+      user.selected = !user.selected;
     },
-    checkAll() {
-      this.users.forEach((user) => {
-        if(this.allSelected === true) {
-          user.selected = false;
-        } else {
-          user.selected = true;
-        }
-    })
-    }
+   checkAll() {
+    this.allSelected = !this.allSelected; 
+    this.users.forEach((user) => {
+        user.selected = this.allSelected;
+    });
+}
   },
   computed: {
     filteredList() {
