@@ -1,6 +1,8 @@
 <template>
   <div class="main">
-
+<h1>Hello</h1>
+<router-view />
+<footer> Stuff Below</footer>
   </div>
 </template>
 
