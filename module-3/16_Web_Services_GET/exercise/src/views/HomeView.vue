@@ -22,7 +22,7 @@ export default {
     return {
       topics: [],
       isLoading: true
-    };
+    }
   },
   methods: {
     getTopics() {
@@ -30,16 +30,16 @@ export default {
         this.topics = response.data;
         this.isLoading = false;
       });
-    }
-      // TODO - Get data from API and set `topics` property
     },
+      // TODO - Get data from API and set `topics` property
+    
     handleErrorResponse() {
       this.isLoading = false;
       this.$store.commit('SET_NOTIFICATION', `Could not get topic data from server.`);
     }
   },
   created() {
-   this.getTopics;
+   this.getTopics();
   }
 };
 </script>

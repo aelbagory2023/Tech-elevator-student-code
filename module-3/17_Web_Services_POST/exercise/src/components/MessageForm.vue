@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import MessageService from '../services/MessageService';
 import messageService from '../services/MessageService';
 
 export default {
@@ -47,12 +48,43 @@ export default {
       }
       // Check for add or edit
       if (this.editMessage.id === 0) {
-        
+        MessageService.addMessage(this.editMessage)
+        .then(response => {
+          if(response.status === 201) {
+              this.$store.commit(
+                'SET_NOTIFICATION',
+                {
+                  message: 'A new message was added.',
+                  type: 'success'
+                }
+              );
+              this.$router.push({ name: 'TopicDetailsView', params: { id: this.editTopic.topicId } });
+            }
+        })
+        .catch(error => {
+          this.handleErrorResponse(error, 'adding');
+        });
         // TODO - Do an add, then navigate Home on success.
         // For errors, call handleErrorResponse
 
       } else {
-        
+       MessageService
+          .updateMessage(this.editMessage)
+          .then(response => {
+            if (response.status === 200) {
+              this.$store.commit(
+                'SET_NOTIFICATION',
+                {
+                  message: `Message ${this.editMessage.id} was updated.`,
+                  type: 'success'
+                }
+              );
+              this.$router.push({ name: 'MessageDetailsView', params: { id: this.editMessage.MessageId } });
+            }
+          })
+          .catch(error => {
+            this.handleErrorResponse(error, 'updating');
+          });
         // TODO - Do an edit, then navigate back to Message Details on success
         // For errors, call handleErrorResponse
 

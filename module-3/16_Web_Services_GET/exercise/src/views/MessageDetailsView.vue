@@ -19,7 +19,7 @@ export default {
   },
   data(){
     return {
-      topicId: this.$route.params.topicId,
+      messageid: this.$route.params.id,
       message: {},
       isLoading: true
     }
@@ -29,7 +29,7 @@ export default {
       messageId = parseInt(this.$route.params.id);
       MessageService.getMessage(messageId)
       .then(response => {
-        this.messsage = response.data;
+        this.message = response.data;
         this.isLoading = false;
       })
       // TODO - Get data from API and set `topics` property
