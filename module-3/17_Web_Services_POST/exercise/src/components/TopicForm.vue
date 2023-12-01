@@ -36,13 +36,16 @@ export default {
     submitForm() {
       // Do client-side form validation 
       if (!this.validateForm()) {
+        console.log("validated form")
         //Form isn't valid, user must update and submit again.
         return;
       }
       // Check for add or edit
       if (this.editTopic.id === 0) {
+      
         TopicService.addTopic(this.editTopic)
-        .then(response => {
+        .then(response => { 
+           console.log("Response status equals " + response.status);
           if(response.status === 201) {
               this.$store.commit(
                 'SET_NOTIFICATION',
@@ -51,7 +54,7 @@ export default {
                   type: 'success'
                 }
               );
-              this.$router.push({ name: 'Homeview' });
+              this.$router.push({ name: 'HomeView' });
             }
         })
         .catch(error => {

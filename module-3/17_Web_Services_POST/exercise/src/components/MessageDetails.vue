@@ -47,7 +47,7 @@ export default {
                   type: 'success'
                 }
               );
-              this.$router.push({ name: 'TopicDetailsView', params: { id: this.editTopic.topicId } });
+              this.$router.push({ name: 'TopicDetailsView', params: { topicId: this.message.id } });
             }
           })
           .catch(error => {
